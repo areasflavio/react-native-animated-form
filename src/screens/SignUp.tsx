@@ -33,7 +33,7 @@ export function SignUp() {
   const {
     control,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<FormData>({
     resolver: yupResolver(schema),
   });
@@ -43,7 +43,13 @@ export function SignUp() {
   return (
     <VStack flex={1} bgColor={'gray.300'}>
       <Center mt={24} mb={12}>
-        <Heading>SignUp</Heading>
+        <Heading
+          color={'gray.500'}
+          textTransform={'uppercase'}
+          letterSpacing={1.4}
+        >
+          Create your account
+        </Heading>
       </Center>
 
       <ScrollView
@@ -107,7 +113,11 @@ export function SignUp() {
           )}
         />
 
-        <Button title="Sign" onPress={handleSubmit(onSubmit)} />
+        <Button
+          title="Sign"
+          onPress={handleSubmit(onSubmit)}
+          isValidForm={isValid}
+        />
       </ScrollView>
     </VStack>
   );
