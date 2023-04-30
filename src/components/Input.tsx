@@ -8,9 +8,11 @@ interface InputProps extends IInputProps {
 export function Input({
   errorMessage = undefined,
   isInvalid,
+  value,
   ...rest
 }: InputProps) {
   const isInputInvalid = !!errorMessage || isInvalid;
+  const isFilled = !!value && !errorMessage;
 
   return (
     <FormControl mb={4} isInvalid={isInputInvalid}>
@@ -20,7 +22,7 @@ export function Input({
         h={16}
         isInvalid={isInputInvalid}
         borderWidth={1}
-        borderColor={'gray.100'}
+        borderColor={isFilled ? 'green.500' : 'gray.100'}
         _focus={{
           bg: 'gray.200',
           borderColor: 'green.500',
@@ -28,6 +30,7 @@ export function Input({
         _invalid={{
           borderColor: 'red.500',
         }}
+        value={value}
         {...rest}
       />
       <FormControl.ErrorMessage>{errorMessage}</FormControl.ErrorMessage>
