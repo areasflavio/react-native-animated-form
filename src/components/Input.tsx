@@ -68,25 +68,24 @@ export function Input({
   }, [errorMessage]);
 
   return (
-    <FormControl marginY={4} isInvalid={isInputInvalid}>
+    <FormControl marginTop={4} isInvalid={isInputInvalid}>
       <AnimatedText
         position={'absolute'}
-        color={'gray.400'}
+        color={'gray.500'}
         left={3}
-        zIndex={1}
+        letterSpacing={1.5}
         style={labelAnimatedStyle}
       >
         {placeholder}
       </AnimatedText>
       <NBInput
-        bg={'gray.100'}
         fontSize={'md'}
         h={16}
         isInvalid={isInputInvalid}
         borderWidth={1}
         borderColor={isFilled ? 'green.700' : 'gray.100'}
         _focus={{
-          bg: 'gray.100',
+          bg: 'transparent',
           borderColor: 'gray.500',
         }}
         _invalid={{
